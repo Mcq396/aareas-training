@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aareas AI Training Resources</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f3ee;
+      --surface: #ffffff;
+      --border: #e0ddd6;
+      --accent: #2d5a3d;
+      --accent-light: #e8f0ea;
+      --text-primary: #1a1916;
+      --text-secondary: #6b6860;
+      --text-muted: #a09d98;
+      --badge-bg: #2d5a3d;
+      --badge-text: #ffffff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 0 0 4rem;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .course-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .course-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 13px;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    .course-meta span::before {
+      content: "· ";
+    }
+    .course-meta span:first-child::before {
+      content: "";
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 2.5rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .section-heading {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--accent-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .play-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .video-card:hover .play-btn {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 16px solid var(--text-secondary);
+      margin-left: 4px;
+      transition: border-left-color 0.15s;
+    }
+
+    .video-card:hover .play-icon {
+      border-left-color: #ffffff;
+    }
+
+    .thumb-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .duration-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.92);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3px 8px;
+    }
+
+    .video-info {
+      padding: 16px 18px 18px;
+    }
+
+    .ep-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    .video-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .video-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      padding: 0 2rem;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="max-width:1100px;margin:0 auto;">
+    <header>
+      <h1>Aareas AI Training Resources</h1>
+      <div class="course-meta">
+        <span>No prior experience needed</span>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-thumb" style="padding:0;background:#000;cursor:pointer;" onclick="window.open('https://www.youtube.com/watch?v=eBW-_8K9Oes','_blank')">
+          <img src="https://img.youtube.com/vi/eBW-_8K9Oes/hqdefault.jpg" alt="Learn Claude in 20 Minutes" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid #fff;margin-left:4px;"></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Learn Claude in 20 Minutes: Chat, CoWork, Code</p>
+          <p class="video-desc">Basic Overview of the Claude ecosystem</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb" style="padding:0;background:#000;cursor:pointer;" onclick="window.open('https://www.youtube.com/watch?v=vMo-yRCN3QM&t=148s','_blank')">
+          <img src="https://img.youtube.com/vi/vMo-yRCN3QM/hqdefault.jpg" alt="Claude Cowork Full Tutorial" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid #fff;margin-left:4px;"></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Claude Cowork Full Tutorial</p>
+          <p class="video-desc">Use Claude Cowork as a virtual assistant that can automate your tasks</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+          <span class="thumb-label">Video placeholder</span>
+          <span class="duration-badge">~14 min</span>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Links, images &amp; media</p>
+          <p class="video-desc">Embedding images, adding hyperlinks, and including video or audio elements.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+          <span class="thumb-label">Video placeholder</span>
+          <span class="duration-badge">~11 min</span>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Forms &amp; input elements</p>
+          <p class="video-desc">Building forms with text fields, dropdowns, checkboxes, and submit buttons.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+          <span class="thumb-label">Video placeholder</span>
+          <span class="duration-badge">~13 min</span>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Styling with CSS basics</p>
+          <p class="video-desc">Linking a stylesheet and applying colors, fonts, spacing, and layout rules.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+          <span class="thumb-label">Video placeholder</span>
+          <span class="duration-badge">~15 min</span>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Publishing &amp; best practices</p>
+          <p class="video-desc">Validating your HTML, accessibility tips, and how to publish your page.</p>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top: 3rem;">
+      <p class="section-heading" style="margin-bottom: 1.25rem;">Claude Documentation</p>
+      <div class="video-grid">
+
+        <a href="https://anthropic.skilljar.com/claude-101" target="_blank" style="text-decoration:none;">
+          <div class="video-card">
+            <div class="video-thumb" style="background: linear-gradient(135deg, #f0f4f8 0%, #dce8f0 100%); flex-direction: column; gap: 8px;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#02668c" stroke-width="1.5"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#02668c" stroke-width="1.5"/>
+              </svg>
+              <span style="font-size:12px;color:#02668c;font-weight:500;">anthropic.skilljar.com</span>
+            </div>
+            <div class="video-info">
+              <p class="video-title">Claude 101</p>
+              <p class="video-desc">Learn how to use Claude for everyday work tasks, understand core features, and explore resources for more advanced learning.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://anthropic.skilljar.com/claude-code-101" target="_blank" style="text-decoration:none;">
+          <div class="video-card">
+            <div class="video-thumb" style="background: linear-gradient(135deg, #f0f4f8 0%, #dce8f0 100%); flex-direction: column; gap: 8px;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#02668c" stroke-width="1.5"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#02668c" stroke-width="1.5"/>
+              </svg>
+              <span style="font-size:12px;color:#02668c;font-weight:500;">anthropic.skilljar.com</span>
+            </div>
+            <div class="video-info">
+              <p class="video-title">Claude Code 101</p>
+              <p class="video-desc">Learn how to use Claude Code effectively in your daily development workflow.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://anthropic.skilljar.com/introduction-to-claude-cowork" target="_blank" style="text-decoration:none;">
+          <div class="video-card">
+            <div class="video-thumb" style="background: linear-gradient(135deg, #f0f4f8 0%, #dce8f0 100%); flex-direction: column; gap: 8px;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#02668c" stroke-width="1.5"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#02668c" stroke-width="1.5"/>
+              </svg>
+              <span style="font-size:12px;color:#02668c;font-weight:500;">anthropic.skilljar.com</span>
+            </div>
+            <div class="video-info">
+              <p class="video-title">Introduction to Claude Cowork</p>
+              <p class="video-desc">Learn to work alongside Claude on your real files and projects, covering the Cowork task loop, plugins, skills, and file workflows.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://anthropic.skilljar.com/claude-code-in-action" target="_blank" style="text-decoration:none;">
+          <div class="video-card">
+            <div class="video-thumb" style="background: linear-gradient(135deg, #f0f4f8 0%, #dce8f0 100%); flex-direction: column; gap: 8px;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#02668c" stroke-width="1.5"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#02668c" stroke-width="1.5"/>
+              </svg>
+              <span style="font-size:12px;color:#02668c;font-weight:500;">anthropic.skilljar.com</span>
+            </div>
+            <div class="video-info">
+              <p class="video-title">Claude Code in Action</p>
+              <p class="video-desc">Integrate Claude Code into your development workflow with hands-on examples and real-world projects.</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <div style="margin-top: 1.25rem; text-align: right;">
+        <a href="https://anthropic.skilljar.com/" target="_blank" style="font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 500;">View all courses on Anthropic Academy →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    Replace each video placeholder with an &lt;iframe&gt; embed or &lt;video&gt; tag when your videos are ready.
+  </footer>
+
+</body>
+</html>
